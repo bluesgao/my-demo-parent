@@ -1,0 +1,36 @@
+@startuml
+title 规则类图
+scale 1.5
+
+interface Rule
+abstract class AbstractRule
+class DefaultRule
+class RuleA
+class RuleB
+class RuleC
+
+Rule <|.. AbstractRule :implement
+AbstractRule <|-- DefaultRule :extend
+AbstractRule <|-- RuleA :extend
+AbstractRule <|-- RuleB :extend
+AbstractRule <|-- RuleC :extend
+
+interface Rule {
+    + excute();
+}
+
+abstract class AbstractRule {
+    + excute();
+}
+
+class RuleA {
+}
+
+class RuleB {
+}
+
+class RuleC {
+}
+
+
+@enduml

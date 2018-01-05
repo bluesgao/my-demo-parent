@@ -40,6 +40,7 @@
     <!--子模块-->
     <modules>
         <module>demo-ssm-web</module>
+        <module>demo-uml</module>
     </modules>
 
     <!--属性-->

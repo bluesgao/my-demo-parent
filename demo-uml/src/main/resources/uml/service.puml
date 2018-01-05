@@ -1,0 +1,38 @@
+@startuml
+title 服务类图
+scale 1.5
+
+interface Service
+interface Rule
+abstract class AbstractService
+class ServiceA
+class ServiceB
+class ServiceC
+
+AbstractService .up.|> Service :implement
+AbstractService *-up-> Rule: contatins
+ServiceA -up-|> AbstractService :extend
+ServiceB -up-|> AbstractService :extend
+ServiceC -up-|> AbstractService :extend
+
+interface Service {
+    serve()
+}
+
+abstract class AbstractService {
+    - Rule rule;
+    + AbstractService(Rule rule);
+    + serve();
+}
+
+class ServiceA {
+}
+
+class ServiceB {
+}
+
+class ServiceC {
+}
+
+
+@enduml
