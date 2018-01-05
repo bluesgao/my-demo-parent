@@ -41,6 +41,7 @@
     <modules>
         <module>demo-ssm-web</module>
         <module>demo-uml</module>
+        <module>demo-easy-rules</module>
     </modules>
 
     <!--属性-->
