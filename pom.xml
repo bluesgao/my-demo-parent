@@ -39,8 +39,6 @@
 
     <!--子模块-->
     <modules>
-        <module>demo-ssm</module>
-        <module>demo-ssm-xml</module>
         <module>demo-ssm-web</module>
     </modules>
 
