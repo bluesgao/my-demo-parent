@@ -1,16 +1,49 @@
 package com.gx.demo;
 
-/**
- * Copyright (C), 2011-2018 {company}
- * FileName: com.gx.demo.AsyncIOTask.java
- * Author: gaoxin
- * Email: gaoxin11@jd.com
- * Date: 2018/1/8 16:41
- * Description:
- * History:
- * <Author>      <Time>    <version>    <desc>
- * {xxx}   16:41    1.0          Create
- */
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-public class AsyncIOTask {
+/**
+ * 自定义的异步IO任务
+ *
+ * @author Will
+ */
+class AsyncIOTask implements Runnable {
+
+    public void run() {
+        HttpURLConnection connection = null;
+        BufferedReader reader = null;
+        try {
+            String getURL = "http://baidu.com";
+            ;
+            ;
+            URL getUrl = new URL(getURL);
+
+            connection = (HttpURLConnection) getUrl.openConnection();
+            connection.connect();
+            reader = new BufferedReader(new InputStreamReader(
+                    connection.getInputStream()));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println("line:"+line);
+            }
+        } catch (IOException e) {
+
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (Exception e) {
+
+                }
+            }
+            connection.disconnect();
+        }
+
+    }
+
 }

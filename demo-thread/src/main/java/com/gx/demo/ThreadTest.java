@@ -13,4 +13,13 @@ package com.gx.demo;
  */
 
 public class ThreadTest {
+    public static void main(String[] args) {
+        while (true){
+            try {
+                Thread.sleep(10*100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

@@ -1,16 +1,32 @@
 package com.gx.demo;
 
-/**
- * Copyright (C), 2011-2018 {company}
- * FileName: com.gx.demo.SimplePoolSizeCaculatorImpl.java
- * Author: gaoxin
- * Email: gaoxin11@jd.com
- * Date: 2018/1/8 16:38
- * Description:
- * History:
- * <Author>      <Time>    <version>    <desc>
- * {xxx}   16:38    1.0          Create
- */
+import java.lang.management.ManagementFactory;
+import java.math.BigDecimal;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
-public class SimplePoolSizeCaculatorImpl {
+public class SimplePoolSizeCaculatorImpl extends PoolSizeCalculator {
+
+    @Override
+    protected Runnable creatTask() {
+        return new AsyncIOTask();
+    }
+
+    @Override
+    protected BlockingQueue createWorkQueue() {
+        return new LinkedBlockingQueue(1000);
+    }
+
+    @Override
+    protected long getCurrentThreadCPUTime() {
+        return ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();
+    }
+
+    public static void main(String[] args) {
+        PoolSizeCalculator poolSizeCalculator = new SimplePoolSizeCaculatorImpl();
+        poolSizeCalculator.calculateBoundaries(new BigDecimal(1.0), new BigDecimal(100));
+    }
+
 }
+
+
